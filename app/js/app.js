@@ -1,10 +1,9 @@
-console.log("hello world")
-var angular = require('angular'),
-    mainModule = require('./main/main.module.js'),
-    vendorModule = require('./requirements.js');
+var angular = require('angular');
+var mainModule = require('./main/main.module.js');
+var vendorModule = require('./requirements.js');
 
 angular
-  .module('school_area', [
+  .module('article', [
     vendorModule.name,
     mainModule.name
   ])

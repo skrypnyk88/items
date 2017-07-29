@@ -1,0 +1,69 @@
+<div layout="row" class="pure-g">
+  <div class="article pure-u-1-2">
+    <div class="article-box">
+      <div class="article-items">
+        <h1>Items</h1>
+        <form class="pure-form" name="addItem" ng-submit="$ctrl.createItem(this)">
+          <fieldset>
+            <input type="text" name="item" placeholder="Type name here..." ng-model="item">
+            <button type="submit"
+                    class="pure-button pure-button-primary"
+                    >Add new</button>
+          </fieldset>
+        </form>
+      </div>
+      <div class="wrapper">
+        <ul class="print-items"
+            >
+          <li ng-repeat="item in $ctrl.items"
+          ng-click="$ctrl.selectItem($index, $event)"
+              >
+            <a href="#" >
+              {{item.name}} <span>{{item.comments.length}}</span>
+            </a>
+            <button ng-click="$ctrl.deleteItem($index)"
+                    class="pure-button pure-button-primary">
+                    Delete
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="comments pure-u-1-2">
+    <div class="comments-box">
+      <div class="comments-items">
+        <h1>Comments #{{$ctrl.index + 1}}</h1>
+      </div>
+      <div ng-if="$ctrl.hide" class="hidden-text">
+        <h1>Select an article, to view a comments.</h1>
+      </div>
+      <div class="comments-list" ng-if="!$ctrl.hide">
+        <ul>
+          <li ng-repeat="comment in $ctrl.comments">
+            <div class="repeat-box">
+              <div class="color-square" style="background: {{comment.color}}">
+              </div>
+              <div class="comment-div pure-u-3-4">
+                <span>{{comment.coment}}</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="add-comment">
+        <form id="form" class="pure-form" name="addIComment">
+          <fieldset>
+            <input id="colorPiker" type="color" name="color" ng-model="color">
+            <textarea name="comment" id="commentField" ng-model="comment" rows="5"
+            placeholder="Type comment here..."
+            class="pure-u-4-5"
+            ng-disabled="$ctrl.index == undefined">
+            </textarea>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

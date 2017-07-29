@@ -1,11 +1,10 @@
 module.exports = angular
-  .module('school_area.main.route', [])
+  .module('main.route', [])
   .config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
-    $stateProvider.state({
-      url: '/',
+    $urlRouterProvider.otherwise('/articles');
+    $stateProvider.state('main', {
       name: 'main',
       template: '<main-component></main-component>'
-    })
-  }])
+    });
+  }]);
